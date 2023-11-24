@@ -1,0 +1,32 @@
+GET https://accounts.livechat.com/v2/accounts/me
+Accept: application/json
+Authorization: Bearer dal:LoDoDGGCtQv7WHUNM_1piW4Y4Zo
+
+###
+###
+
+# curl "https://accounts.livechat.com/v2/token"
+#  -X POST
+#  -d "grant_type=authorization_code&
+#  code=YOUR_CODE_HERE&
+#  client_id=YOUR_ID_HERE&
+#  client_secret=YOUR_SECRET_HERE&
+#  redirect_uri=YOUR_redirect_HERE"
+POST https://accounts.livechat.com/v2/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&code=dal%3AN9DM_VIHr39V_oC-251aFqXeRMM&client_id=f9e9e9d9ea2a1696e031c9eb23f13f26&client_secret=03868ed41f6243984fb7a234fd12fef9fdd0ee2e&redirect_uri=http%3A%2F%2Flocalhost%3A8181
+
+###
+
+
+{
+  "access_token": "dal:LoDoDGGCtQv7WHUNM_1piW4Y4Zo",
+  "account_id": "65c927c5-245b-484b-9ee2-936c6d527d16",
+  "client_id": "f9e9e9d9ea2a1696e031c9eb23f13f26",
+  "expires_in": 28800,
+  "organization_id": "30db2797-65c8-4f8b-b6fc-5cdba5f68d7c",
+  "refresh_token": "dal:yd4CVlKA5wJtM_rctFBRF4o6yvY",
+  "scope": "accounts.roles--all:ro",
+  "token_type": "Bearer"
+}
