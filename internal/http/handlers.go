@@ -8,6 +8,11 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+const (
+	tokenQueryParam = "token"
+	codeQueryParam  = "code"
+)
+
 type Handler struct {
 	provider  security.TokenProvider
 	validator EmailVerificationValidator
@@ -23,10 +28,10 @@ type EmailVerificationValidator interface {
 }
 
 func (h *Handler) Redirect(c echo.Context) error {
-	// get code from url
-	code := c.QueryParam("code")
+	log.Println("GET /")
 
-	// get auth token from GetToken()
+	code := c.QueryParam(codeQueryParam)
+
 	accessToken, err := h.provider.GetToken(code)
 	if err != nil {
 		return c.String(http.StatusOK, err.Error())
@@ -43,7 +48,9 @@ func (h *Handler) Redirect(c echo.Context) error {
 }
 
 func (h *Handler) Activation(c echo.Context) error {
-	token := c.QueryParam("token")
+	log.Println("GET /activate")
+
+	token := c.QueryParam(tokenQueryParam)
 	err := h.service.Activate(token)
 	if err != nil {
 		return c.String(http.StatusOK, err.Error())
@@ -53,6 +60,7 @@ func (h *Handler) Activation(c echo.Context) error {
 }
 
 func (h *Handler) Dashboard(c echo.Context) error {
-	log.Println("dashboard")
+	log.Println("GET /dashboard")
+
 	return c.File("public/dashboard.html")
 }

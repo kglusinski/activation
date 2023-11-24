@@ -1,3 +1,11 @@
+# Activation email flow
+## Run app
+1. Copy `.env.dist` to `.env` and fill it with proper values
+2. Run `docker run -p 8025:8025 -p 1025:1025 mailhog/mailhog`
+3. Run `go run ./...`
+
+todo: prepare docker-compose file and Makefile
+
 ## Business description
 The goal is to introduce a required e-mail verification in Text.com.
 Every product under Text.com will use this mechanism (new accounts and existing ones will be required to be verified).
